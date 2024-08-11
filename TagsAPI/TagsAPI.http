@@ -1,0 +1,6 @@
+@TagsAPI_HostAddress = http://localhost:5029
+
+GET {{TagsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
