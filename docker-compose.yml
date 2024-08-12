@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  tagsapidb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+       - 8002:1433 
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password@12345#
+  tagsapi:
+    container_name: TagsAPIapp
+    image: ${DOCKER_REGISTRY-}tagsapi
+    build:
+      context: .
+      dockerfile: TagsAPI/Dockerfile
+    ports:
+       - 8001:80
+    depends_on:
+       - tagsapidb
+    environment:
+       - DB_HOST=tagsapidb
+       - DB_NAME=TagsAPIDatabase
+       - DB_SA_PASSWORD=password@12345#

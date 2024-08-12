@@ -1,5 +1,6 @@
-﻿namespace StackOverflowTagsAPI.DTOs
+﻿namespace TagsAPI.Interfaces
 {
+    //placeholder
     public interface ITagDTO
     {
         double Count { get; }
